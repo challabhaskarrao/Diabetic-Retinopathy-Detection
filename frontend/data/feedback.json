@@ -1,0 +1,57 @@
+[
+  {
+    "id": "FB-10001",
+    "reporterName": "Dr. Rajesh Kumar",
+    "reporterRole": "Ophthalmologist",
+    "reportAccuracyRating": 5,
+    "feedbackType": "Accuracy",
+    "moduleAffected": "diabeticRetinopathy",
+    "comments": "The Diabetic Retinopathy module shows extremely high alignment with our clinical grading. The macular edema risk assessment is spot on.",
+    "timestamp": "2026-06-26T11:35:20.365Z",
+    "status": "Resolved"
+  },
+  {
+    "id": "FB-10002",
+    "reporterName": "Sister Mary",
+    "reporterRole": "Asha Worker",
+    "reportAccuracyRating": 4,
+    "feedbackType": "Module Improvement",
+    "moduleAffected": "universalScreening",
+    "comments": "The interface is very easy to use on my portable tablet, but it would be great if the recommendation cards could be exported to PDF faster.",
+    "timestamp": "2026-06-29T11:35:20.366Z",
+    "status": "Reviewed"
+  },
+  {
+    "id": "FB-10003",
+    "reporterName": "Dr. Priya Nair",
+    "reporterRole": "Pediatric Specialist",
+    "reportAccuracyRating": 4,
+    "feedbackType": "Module Improvement",
+    "moduleAffected": "pediatricRetinalImaging",
+    "comments": "Very impressive wide-field ROP simulation. I suggest adding more descriptive detail to the Zone classification output to help junior residents.",
+    "timestamp": "2026-07-01T11:35:20.366Z",
+    "status": "Pending"
+  },
+  {
+    "id": "FB-10004",
+    "reporterName": "Technician Ramesh G.",
+    "reporterRole": "General Practitioner",
+    "reportAccuracyRating": 3,
+    "feedbackType": "Usability Issue",
+    "moduleAffected": "General / App-wide",
+    "comments": "Sometimes the high-resolution fundus images take 10 seconds to process over our 3G network. A compression indicator would be helpful.",
+    "timestamp": "2026-07-03T11:35:20.366Z",
+    "status": "Reviewed"
+  },
+  {
+    "id": "FB-10005",
+    "reporterName": "Dr. Amit Patil",
+    "reporterRole": "Ophthalmologist",
+    "reportAccuracyRating": 5,
+    "feedbackType": "Accuracy",
+    "moduleAffected": "ocularUltrasound3D",
+    "comments": "The 3D ocular ultrasound B-scan classification correctly identified a complex partial detachment. Excellent reliability.",
+    "timestamp": "2026-07-05T11:35:20.366Z",
+    "status": "Resolved"
+  }
+]

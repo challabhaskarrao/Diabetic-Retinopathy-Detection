@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #F8FAFC;
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.1), transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.1), transparent 25%),
+      radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.05), transparent 40%);
+    background-attachment: fixed;
+    color: #0F172A;
+    font-family: 'Outfit', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  input, select { font-family: inherit; }
+  
+  /* Animated glowing orbs in the background (very subtle for light mode) */
+  body::before, body::after {
+    content: '';
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+    animation: float 20s ease-in-out infinite alternate;
+  }
+  body::before {
+    top: -100px; left: -100px;
+    background: rgba(59, 130, 246, 0.08);
+  }
+  body::after {
+    bottom: -100px; right: -100px;
+    background: rgba(139, 92, 246, 0.06);
+    animation-delay: -10s;
+  }
+  @keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 50px) scale(1.1); }
+  }
+}
+
+@layer utilities {
+  .page {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 40px 32px 60px;
+  }
+
+  /* ── Light Glassmorphism Panels ────────────────────────────────── */
+  .panel {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.05), 0 12px 32px -4px rgba(0,0,0,0.02);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .panel:hover {
+    border-color: rgba(255, 255, 255, 1);
+  }
+  .panel-head {
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(to right, rgba(255,255,255,0.4), transparent);
+  }
+  .panel-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #475569;
+  }
+  .panel-body { padding: 24px; }
+
+  /* ── Form fields ─────────────────────────────────────────── */
+  .f-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .f-input {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    color: #0F172A;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 10px 14px;
+    outline: none;
+    transition: all 0.2s ease;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
+  }
+  .f-input::placeholder { color: #94A3B8; }
+  .f-input:focus {
+    border-color: #3B82F6;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  }
+  .f-input option {
+    background: #FFFFFF;
+    color: #0F172A;
+  }
+
+  /* ── Upload zone ─────────────────────────────────────────── */
+  .drop-zone {
+    border: 2px dashed rgba(148, 163, 184, 0.4);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .drop-zone::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.6), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  .drop-zone:hover::before { transform: translateX(100%); }
+  .drop-zone:hover, .drop-zone.over {
+    border-color: #8B5CF6;
+    background: rgba(139, 92, 246, 0.04);
+  }
+
+  /* ── Analyze button ──────────────────────────────────────── */
+  .btn-analyze {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 20px -4px rgba(99, 102, 241, 0.3);
+    overflow: hidden;
+  }
+  .btn-analyze::after {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: translateX(-100%);
+  }
+  .btn-analyze:hover:not(:disabled) { 
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px -4px rgba(99, 102, 241, 0.4);
+  }
+  .btn-analyze:hover:not(:disabled)::after {
+    animation: shimmer 1.5s infinite;
+  }
+  @keyframes shimmer { 100% { transform: translateX(100%); } }
+  .btn-analyze:active:not(:disabled) { transform: translateY(0); }
+  .btn-analyze:disabled { 
+    background: rgba(148, 163, 184, 0.3);
+    color: rgba(255, 255, 255, 0.9);
+    box-shadow: none; cursor: not-allowed; 
+  }
+
+  /* ── Small buttons ───────────────────────────────────────── */
+  .btn-sm {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600; border-radius: 8px;
+    padding: 8px 14px; cursor: pointer; border: none; transition: all 0.2s ease;
+  }
+  .btn-sm-white { 
+    background: rgba(255, 255, 255, 0.8); 
+    color: #334155; 
+    border: 1px solid rgba(255, 255, 255, 1); 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+  }
+  .btn-sm-white:hover { 
+    background: #FFFFFF; 
+    border-color: #E2E8F0; 
+  }
+  .btn-sm-ghost { 
+    background: rgba(239, 68, 68, 0.08); 
+    color: #DC2626; 
+    border: 1px solid rgba(239, 68, 68, 0.15); 
+  }
+  .btn-sm-ghost:hover { 
+    background: rgba(239, 68, 68, 0.12); 
+  }
+  .btn-sm-blue { 
+    background: rgba(59, 130, 246, 0.1); 
+    color: #2563EB; 
+    border: 1px solid rgba(59, 130, 246, 0.2);
+  }
+  .btn-sm-blue:hover { 
+    background: rgba(59, 130, 246, 0.15); 
+  }
+
+  /* ── Badges ──────────────────────────────────────────────── */
+  .tag {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 700; border-radius: 20px;
+    padding: 4px 10px; letter-spacing: 0.02em;
+  }
+  .tag-green { background: rgba(34, 197, 94, 0.15); color: #166534; border: 1px solid rgba(34, 197, 94, 0.2); }
+  .tag-amber { background: rgba(245, 158, 11, 0.15); color: #92400E; border: 1px solid rgba(245, 158, 11, 0.2); }
+  .tag-red   { background: rgba(239, 68, 68, 0.15); color: #991B1B; border: 1px solid rgba(239, 68, 68, 0.2); }
+  
+  /* Glass card inside panels */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    box-shadow: inset 0 2px 4px rgba(255,255,255,0.4), 0 2px 8px rgba(0,0,0,0.02);
+  }
+
+  /* ── Progress bars ───────────────────────────────────────── */
+  .bar-track { 
+    background: rgba(148, 163, 184, 0.15); 
+    border-radius: 8px; height: 8px; overflow: hidden; 
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .bar-fill  { 
+    height: 100%; border-radius: 8px; 
+    transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1); 
+    position: relative;
+  }
+  .bar-fill::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: barShine 2s infinite linear;
+  }
+
+  /* ── Result layout rows ──────────────────────────────────── */
+  .result-row { display: grid; gap: 24px; margin-bottom: 24px; }
+  .cols-2     { grid-template-columns: 1fr 1fr; }
+  .cols-1     { grid-template-columns: 1fr; }
+
+  /* ── Responsive ──────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .cols-2    { grid-template-columns: 1fr; }
+    .page      { padding: 24px 20px 40px; }
+  }
+  @media (max-width: 640px) {
+    .page   { padding: 16px 16px 32px; }
+    .panel-body { padding: 16px; }
+    .panel-head { padding: 12px 16px; }
+  }
+  @media print { .no-print { display: none !important; } }
+}

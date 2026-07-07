@@ -1,0 +1,40 @@
+# 🔒 Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 🔑 Environment variables (NEVER commit secrets!)
+.env
+.env.local
+.env.*.local
+
+# 📦 Build outputs
+dist/
+build/
+*.cjs.map
+
+# 🛠️ IDE / Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 💻 OS Files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# 📝 Logs
+logs/
+*.log
+
+# 🧪 Testing
+coverage/
+.nyc_output/
+
+# ⚡ Vite
+.vite/

@@ -1,0 +1,36 @@
+# Dataset (never commit raw medical images)
+dataset/raw_images/
+dataset/processed_images/
+*.jpeg
+*.jpg
+*.png
+!results/figures/*.png
+!dataset/sample_images/*.jpg
+
+# Trained model weights (large binaries - use Git LFS or external storage instead)
+models/saved_models/*.keras
+models/saved_models/*.h5
+models/saved_models/*.tflite
+
+# Results / logs
+results/logs/tensorboard/
+results/logs/*.csv
+*.log
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+env/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Streamlit
+.streamlit/secrets.toml
